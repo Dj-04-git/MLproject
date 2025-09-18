@@ -6,5 +6,6 @@ catboost
 scikit-learn
 xgboost
 dill
-flask
+Flask==2.3.3
+gunicorn==23.0.0
 #-e .
