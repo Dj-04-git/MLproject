@@ -7,3 +7,4 @@ catboost
 scikit-learn
 xgboost
 dill
+gunicorn
