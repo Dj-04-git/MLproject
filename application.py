@@ -1,5 +1,5 @@
 import pickle
-from flask import Flask,request,render_template
+from flask import Flask,request,render_template,session
 import pandas as pd
 import numpy as np
 
@@ -33,11 +33,15 @@ def predict_datapoint():
         )
 
         pred_df = data.get_data_as_dataframe()
-        print(pred_df)
 
         predict_pipe = predictpipeline()
         results = predict_pipe.predict(pred_df)
         return render_template('home.html',results=results[0])
+    
+@app.route('/predictdata/result')
+def prediction_result():
+    result = session.get('result', None)
+    return render_template('home.html', results=result)
     
 if __name__ == '__main__':
     app.run(host="0.0.0.0",debug=True)
